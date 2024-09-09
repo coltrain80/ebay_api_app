@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  event-notification:
+    build: ./event-notification-golang-sdk
+    ports:
+      - "8080:8080"
+    networks:
+      - ebay-app-net
+
+  ebaysdk:
+    build: ./ebaysdk-python
+    ports:
+      - "5000:5000"
+    networks:
+      - ebay-app-net
+
+networks:
+  ebay-app-net:
+    driver: bridge
